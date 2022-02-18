@@ -21,7 +21,7 @@ http-response https:\/\/device-api\.xchanger\.cn tag=领克数据, script-path=h
 ===================
 
 [rewrite_local]
-https:\/\/device-api\.xchanger\.cn  url script-response-body https://gitee.com/wangningkai/QuantumultX-Script/raw/main/src/lynkco.js
+^https:\/\/device-api\.xchanger\.cn url script-response-body https://gitee.com/wangningkai/QuantumultX-Script/raw/main/src/lynkco.js
 
  */
 
@@ -32,7 +32,7 @@ if ($request) GetVehicleStatus();
 function GetVehicleStatus() {
   if ($request.url.indexOf('status') > -1) {
     const data = JSON.parse($response.body);
-    $.log(data);
+    $.log(response);
     if (data) {
       $.write(data, 'vehicle_data');
       $.notify('领克数据', '领克数据写入成功');
